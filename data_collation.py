@@ -1,3 +1,4 @@
+#整理训练数据
 def data_collation(df):
     selection1 = df['Data Validity Comment'].isna()
     selection2 = []

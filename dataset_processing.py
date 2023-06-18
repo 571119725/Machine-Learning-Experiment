@@ -1,9 +1,8 @@
-from sklearn import svm 
-from sklearn import preprocessing 
+#数据预处理，创建训练集和测试集
+
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from rdkit import Chem
-from rdkit.Chem.Draw import IPythonConsole # 在jupyter-notebook中显示分子结构
 from mordred import Calculator, descriptors
 from molvs import Standardizer
 import pickle

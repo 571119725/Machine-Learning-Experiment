@@ -7,16 +7,16 @@ from dataset_processing import save, load
 def train_model(descriptors_ki):
     clf = svm.SVC(gamma='scale')  #定义分类器classifier。(合理使用SVM需要调参确定C和gamma，这里不做展开，仅用默认参数)
 
-    features = descriptors_ki.columns[:-1]
+    features = descriptors_ki.columns[:-1] #读取数据集中的第一列到倒数第二列的标签
     y = descriptors_ki['labels'].values
     X = descriptors_ki[features].values
 
     scaler = preprocessing.StandardScaler().fit(X)
     X = scaler.fit_transform(X)  #将数据标准化 
 
-    X_train, X_test, y_train, y_test = train_test_split(X,y) # 分割为训练集（3/4）和测试集(1/4)，
-    clf.fit(X_train, y_train)
-    save((clf,scaler,features),PARAMS_PATH + MODEL_NAME)
+    X_train, X_test, y_train, y_test = train_test_split(X,y) #分割为训练集（3/4）和测试集(1/4)，
+    clf.fit(X_train, y_train) #拟合模型
+    save((clf,scaler,features),PARAMS_PATH + MODEL_NAME) #在路径下保存模型参数
     return X_test, y_test
 
 def test_model(descriptors_ic50, df):
