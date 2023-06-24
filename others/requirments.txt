@@ -1,9 +1,7 @@
-numpy==1.17.1
+numpy==1.17.2
 pandas==0.24.1
 mordred
 molvs
 scikit-learn
 Ipython
 phigaro
-mordred
-molvs

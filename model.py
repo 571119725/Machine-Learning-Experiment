@@ -3,11 +3,12 @@ from sklearn import svm
 from sklearn import preprocessing 
 from sklearn.model_selection import train_test_split
 from dataset_processing import save, load
+import pandas as pd
 
 def train_model(descriptors_ki):
     clf = svm.SVC(gamma='scale')  #定义分类器classifier。(合理使用SVM需要调参确定C和gamma，这里不做展开，仅用默认参数)
 
-    features = descriptors_ki.columns[:-1] #读取数据集中的第一列到倒数第二列的标签
+    features = descriptors_ki.columns[:-2 + 1] #读取数据集中的第一列到倒数第二列的标签
     y = descriptors_ki['labels'].values
     X = descriptors_ki[features].values
 
@@ -28,10 +29,9 @@ def test_model(descriptors_ic50, df):
         X = descriptors_ic50[features].values
         X = scaler.fit_transform(X)   # 用训练集中的scaler参数标准化数据集
         y_prediction = clf.predict(X)
-
         df['label'] = y_prediction
         active = df[ df['label'] == 1 ]
         true_active = active[ active['Standard Value']<1e4 ]
         df_true_active = df[df['Standard Value']<1e4]
-
+        df.to_csv(PARAMS_PATH + PREDICTION, index = False)
         return df, active, true_active, df_true_active

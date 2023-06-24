@@ -1,5 +1,5 @@
 #定义系统使用的常量
-# 只在读取的csv中关注这几列数据
+# 只在读取的csv中关注这几列数据,分类依据Standard Value
 NAMES = ['Molecule ChEMBL ID', 'Molecule Name', 'Smiles', 
         'Standard Type', 'Standard Relation', 'Standard Value', 'Standard Units',
         'Data Validity Comment', 'Comment',] 
@@ -17,5 +17,7 @@ TRAINING_SET = 'descriptors-ki.data'
 TESTING_SET = 'descriptors-ic50.data'
 #模型参数文件名
 MODEL_NAME = 'model'
+#预测结果文件名
+PREDICTION = 'prediction.csv'
 #代码运行方式，True为训练模型，False为测试模型
-RUN_TYPE = True
+RUN_TYPE = False

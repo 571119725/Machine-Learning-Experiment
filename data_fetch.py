@@ -3,6 +3,7 @@ from constant import *
 import pandas as pd
 
 def data_loader(train):
+    #两种形式，1. return中使用双分支结构 2. return参数
     return train_data_preprogress() if train else test_data_preprogress()
     
 def train_data_preprogress():
