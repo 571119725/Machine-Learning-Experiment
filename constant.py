@@ -15,9 +15,13 @@ TESTING_DATA = 'AChE.IC50.csv'
 TRAINING_SET = 'descriptors-ki.data'
 #测试集数据
 TESTING_SET = 'descriptors-ic50.data'
+#训练集csv
+TRAINING_CSV = 'descriptors-ki.csv'
+#测试集csv
+TESTING_CSV = 'descriptors-ic50.csv'
 #模型参数文件名
 MODEL_NAME = 'model'
 #预测结果文件名
-PREDICTION = 'prediction.csv'
+PREDICTION = 'prediction'
 #代码运行方式，True为训练模型，False为测试模型
-RUN_TYPE = False
+RUN_TYPE = True

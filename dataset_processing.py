@@ -33,7 +33,10 @@ def create_training_data(active, inactive):
     else:
         active_descriptors = calc_descriptors(active['Smiles'])
         inactive_descriptors = calc_descriptors(inactive['Smiles'])
+
         save((active_descriptors,inactive_descriptors), PARAMS_PATH + TRAINING_SET)
+    # if ~os.path.isfile(PARAMS_PATH + TRAINING_CSV):
+    #     active_descriptors.to_csv(PARAMS_PATH + TRAINING_CSV, index = False)
     active_descriptors['labels']=1
     inactive_descriptors['labels']=0
     descriptors_ki = pd.concat([active_descriptors,inactive_descriptors],ignore_index=True)
